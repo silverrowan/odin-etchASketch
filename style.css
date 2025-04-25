@@ -1,11 +1,27 @@
 * {
     border: 1px solid orange;
     margin: 2px;
+    box-sizing: content-box;
 }
 
-/* #container {}
-.row {}
-.column {} */
+#container {
+    height: 1000px;
+    width: 1000px;
+    border: 1px solid darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+    
+.column {
+    background-color: lightgoldenrodyellow;
+    flex: 1;
+}
+
 
 .trace {
     background-color: gold;
