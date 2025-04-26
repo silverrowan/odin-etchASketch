@@ -9,8 +9,6 @@
 // ==============Create Grid==============
 const gridContainer = document.querySelector('#container')
 
-// let gridSize = 16;
-
 function createGrid (gridSize = 16) {
     for (let i = 0; i < gridSize; i++) {
         const rowDiv = document.createElement('div');
@@ -18,6 +16,7 @@ function createGrid (gridSize = 16) {
         for (let k = 0; k < gridSize; k++) {
             const colDiv = document.createElement('div');
             colDiv.classList.add('column');
+            mouseTrace(colDiv);
             rowDiv.appendChild(colDiv);
         }
         gridContainer.appendChild(rowDiv);
@@ -26,9 +25,10 @@ function createGrid (gridSize = 16) {
 
 createGrid()
 
-// ==============Set Up Mouse Trace==============
-// "hover" effect - make grid divs change color when mouse passes over them, and remain after it leaves
-    //add "trace" class to div
+// ==============Mouse Trace Function==============
+function mouseTrace (element) {
+    element.addEventListener("mouseover", () => element.classList.add('trace'));
+}
 
 // ==============Set Up Reset Function==============
 function resetGrid () {
