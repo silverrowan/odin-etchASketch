@@ -25,7 +25,8 @@ function mouseTrace (element) {
 // ==============Set Up Reset Function==============
 function resetGrid () {
     //TODO remove old grid entirely
-    createGrid(prompt('How many squares per side should the new grid have? (max 100)')); //create new grid of promted size
+    let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
+    createGrid(prompt(sizeQuestion)); //create new grid of promted size
     //TODO Limit to max 100, numbers only
 }
 
