@@ -13,7 +13,7 @@ function createGrid (gridSize = 16) {
         }
         gridContainer.appendChild(rowDiv);
     }
-}
+} 
 
 createGrid()
 
@@ -28,14 +28,15 @@ function resetGrid () {
 
     // ==============Prompt & Check Response==============
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
-    let sizePromptResponce = prompt(sizeQuestion);
-    if( !(Number.isInteger(sizePromptResponce)) || sizePromptResponce > 100 || sizePromptResponce < 1 ) {
+    let sizePromptResponce = Number(prompt(sizeQuestion));
+    while ( sizePromptResponce > 100 || sizePromptResponce < 1 || !(Number.isInteger(sizePromptResponce)) ) {    
+        console.log((Number.isInteger(sizePromptResponce)));
+        console.log(!(Number.isInteger(sizePromptResponce)));        
         alert("Please enter an integer (whole number) from 1 to 100");
-        prompt(sizeQuestion);
-    } else {
-        // ==============Create Grid of Prompt Size==============
-        createGrid(sizePromptResponce); 
+        sizePromptResponce = Number(prompt(sizeQuestion));
     }
+    // ==============Create Grid of Prompt Size==============
+    createGrid(sizePromptResponce); 
 }
 
 // ==============Create User Interface==============
