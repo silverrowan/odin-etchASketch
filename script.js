@@ -28,12 +28,17 @@ function resetGrid () {
 
     // ==============Prompt & Check Response==============
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
-    let sizePromptResponce = Number(prompt(sizeQuestion));
-    while ( sizePromptResponce > 100 || sizePromptResponce < 1 || !(Number.isInteger(sizePromptResponce)) ) {    
+    let sizePromptResponce = prompt(sizeQuestion);
+    let numPromptResponce = Number(sizePromptResponce)
+    while ( numPromptResponce > 100 || numPromptResponce < 1 || !(Number.isInteger(numPromptResponce)) ) {    
         console.log((Number.isInteger(sizePromptResponce)));
         console.log(!(Number.isInteger(sizePromptResponce)));        
         alert("Please enter an integer (whole number) from 1 to 100");
-        sizePromptResponce = Number(prompt(sizeQuestion));
+        sizePromptResponce = prompt(sizeQuestion);
+        numPromptResponce = Number(sizePromptResponce);
+        if (sizePromptResponce == null) {
+            break;
+        } 
     }
     // ==============Create Grid of Prompt Size==============
     createGrid(sizePromptResponce); 
