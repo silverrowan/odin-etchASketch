@@ -9,18 +9,22 @@
 // ==============Create Grid==============
 const gridContainer = document.querySelector('#container')
 
-let gridSize = 16;
+// let gridSize = 16;
 
-for (let i = 0; i < gridSize; i++) {
-    const rowDiv = document.createElement('div');
-    rowDiv.classList.add('row');
-    for (let k = 0; k < gridSize; k++) {
-        const colDiv = document.createElement('div');
-        colDiv.classList.add('column');
-        rowDiv.appendChild(colDiv);
+function createGrid (gridSize = 16) {
+    for (let i = 0; i < gridSize; i++) {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+        for (let k = 0; k < gridSize; k++) {
+            const colDiv = document.createElement('div');
+            colDiv.classList.add('column');
+            rowDiv.appendChild(colDiv);
+        }
+        gridContainer.appendChild(rowDiv);
     }
-    gridContainer.appendChild(rowDiv);
 }
+
+createGrid()
 
 // ==============Set Up Mouse Trace==============
 // "hover" effect - make grid divs change color when mouse passes over them, and remain after it leaves
@@ -28,14 +32,16 @@ for (let i = 0; i < gridSize; i++) {
 
 // ==============Set Up Reset Function==============
 function resetGrid () {
-    gridSize = prompt('Enter New Grid Size (rows or columns, max 100)');
     //remove old grid entirely
+    createGrid(prompt('Enter New Grid Size (rows or columns, max 100)')); //create new grid of promted size
     //run create grid with new gridSize
 }
 
 // ==============Create User Interface==============
 let resetButton = document.createElement('button');
     resetButton.textContent ='Reset Grid (Currently does nothing)';
+    resetButton.addEventListener('click', resetGrid);
+
     gridContainer.parentNode.insertBefore(resetButton, gridContainer);
 
 //button @ top of screen that opens a popup asking for new grid size
