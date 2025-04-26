@@ -5,24 +5,22 @@
         // create one div gridSize, class "row",
         // iterate gridsize times
             // create div inside row class div, class "column",
-// ===Dummy Divs for flexbox layout===
-let gridContainer = document.querySelector('#container')
 
-let divRow1 = document.createElement('div');
-let divRow2 = document.createElement('div');
-    divRow1.classList.add("row");
-    divRow2.classList.add("row");
+// ==============Create Grid==============
+const gridContainer = document.querySelector('#container')
 
-let divCol1 = document.createElement('div');
-let divCol2 = document.createElement('div');
-    divCol1.classList.add("column");
-    divCol2.classList.add("column");
+let gridSize = 16;
 
-    divRow1.appendChild(divCol1);
-    divRow1.appendChild(divCol2);
-
-    gridContainer.appendChild(divRow1);
-    gridContainer.appendChild(divRow2);
+for (let i = 0; i < gridSize; i++) {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
+    for (let k = 0; k < gridSize; k++) {
+        const colDiv = document.createElement('div');
+        colDiv.classList.add('column');
+        rowDiv.appendChild(colDiv);
+    }
+    gridContainer.appendChild(rowDiv);
+}
 
 // ==============Set Up Mouse Trace==============
 // "hover" effect - make grid divs change color when mouse passes over them, and remain after it leaves
