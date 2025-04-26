@@ -1,12 +1,4 @@
 // ==============Create Grid==============
-// get size of grid: on load 16x16, later by user input
-    // let gridSize = 16 //initially, to be updated by user input
-    // iterate gridSize times
-        // create one div gridSize, class "row",
-        // iterate gridsize times
-            // create div inside row class div, class "column",
-
-// ==============Create Grid==============
 const gridContainer = document.querySelector('#container')
 
 function createGrid (gridSize = 16) {
@@ -32,19 +24,14 @@ function mouseTrace (element) {
 
 // ==============Set Up Reset Function==============
 function resetGrid () {
-    //remove old grid entirely
-    createGrid(prompt('Enter New Grid Size (rows or columns, max 100)')); //create new grid of promted size
-    //run create grid with new gridSize
+    //TODO remove old grid entirely
+    createGrid(prompt('How many squares per side should the new grid have? (max 100)')); //create new grid of promted size
+    //TODO Limit to max 100, numbers only
 }
 
 // ==============Create User Interface==============
 let resetButton = document.createElement('button');
-    resetButton.textContent ='Reset Grid (Currently does nothing)';
+    resetButton.textContent ='Reset Grid';
     resetButton.addEventListener('click', resetGrid);
 
     gridContainer.parentNode.insertBefore(resetButton, gridContainer);
-
-//button @ top of screen that opens a popup asking for new grid size
-    //once entered prev grid to be REMOVED
-    //new grid generated in the SAME TOTAL SPACE as before
-    //set maximum to 100 to avoid freezing etc.
