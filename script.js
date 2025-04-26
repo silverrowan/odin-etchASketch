@@ -28,7 +28,18 @@ let divCol2 = document.createElement('div');
 // "hover" effect - make grid divs change color when mouse passes over them, and remain after it leaves
     //add "trace" class to div
 
+// ==============Set Up Reset Function==============
+function resetGrid () {
+    gridSize = prompt('Enter New Grid Size (rows or columns, max 100)');
+    //remove old grid entirely
+    //run create grid with new gridSize
+}
+
 // ==============Create User Interface==============
+let resetButton = document.createElement('button');
+    resetButton.textContent ='Reset Grid (Currently does nothing)';
+    gridContainer.parentNode.insertBefore(resetButton, gridContainer);
+
 //button @ top of screen that opens a popup asking for new grid size
     //once entered prev grid to be REMOVED
     //new grid generated in the SAME TOTAL SPACE as before
