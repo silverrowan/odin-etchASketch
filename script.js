@@ -22,9 +22,15 @@ function mouseTrace (element) {
     element.addEventListener("mouseover", () => element.classList.add('trace'));
 }
 
+// ==============Clear Function==============
+function gridClear () {
+    const rowDivsToRemove = document.querySelector('.row');
+    gridContainer.removeChild(rowDivsToRemove); //successfully removes ONE row
+}
+
 // ==============Set Up Reset Function==============
 function resetGrid () {
-    //TODO remove old grid entirely
+    gridClear(); //currently incomplete
     resetPrompt ();
 }
 
