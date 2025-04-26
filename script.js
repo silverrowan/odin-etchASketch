@@ -22,9 +22,15 @@ function mouseTrace (element) {
     element.addEventListener("mouseover", () => element.classList.add('trace'));
 }
 
+// ==============Clear Function==============
+function gridClear () {
+    const rowDivsToRemove = document.querySelector('.row');
+    gridContainer.removeChild(rowDivsToRemove); //successfully removes ONE row
+}
+
 // ==============Set Up Reset Function==============
 function resetGrid () {
-    //TODO remove old grid entirely
+    gridClear();
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
     createGrid(prompt(sizeQuestion)); //create new grid of promted size
     //TODO Limit to max 100, numbers only
