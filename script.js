@@ -50,3 +50,5 @@ let resetButton = document.createElement('button');
     resetButton.addEventListener('click', resetGrid);
 
     gridContainer.parentNode.insertBefore(resetButton, gridContainer);
+
+    //testing that local and github versions are push/pull-able
