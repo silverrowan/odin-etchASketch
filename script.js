@@ -25,9 +25,17 @@ function mouseTrace (element) {
 // ==============Set Up Reset Function==============
 function resetGrid () {
     //TODO remove old grid entirely
+
+    // ==============Prompt & Check Response==============
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
-    createGrid(prompt(sizeQuestion)); //create new grid of promted size
-    //TODO Limit to max 100, numbers only
+    let sizePromptResponce = prompt(sizeQuestion);
+    if( !(Number.isInteger(sizePromptResponce)) || sizePromptResponce > 100 || sizePromptResponce < 1 ) {
+        alert("Please enter an integer (whole number) from 1 to 100");
+        prompt(sizeQuestion);
+    } else {
+        // ==============Create Grid of Prompt Size==============
+        createGrid(sizePromptResponce); 
+    }
 }
 
 // ==============Create User Interface==============
