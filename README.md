@@ -14,5 +14,5 @@ When clicked: A prompt appears, asking for the size of grid to draw.
 If a non-number or restricted number (not an integer between 1-100, 
 inclusive) is entered, an alert followed by re-prompt appears.
 
-Currently if the cancel button is clicked an empty grid appears.
-    Would it be better to leave the old grid in this case?
+When a number between 1-100 is entered, the current grid is removed, 
+and a new clean grid is created of the size specified.

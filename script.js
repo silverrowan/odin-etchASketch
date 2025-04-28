@@ -27,20 +27,16 @@ function gridClear () {
     gridContainer.replaceChildren();
 }
 
-// ==============Set Up Reset Function==============
-function resetGrid () {
-    gridClear();
-    createGridByPrompt ();
-}
-
-// ==============Prompt, Check Response, & Route==============
-function createGridByPrompt () {
+// ==============Prompt, Check Response, & Call Clear + Create==============
+function resetGridWithPrompt () {
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
     let sizePromptResponce = prompt(sizeQuestion);
     let numPromptResponce = Number(sizePromptResponce);
+
     if (sizePromptResponce == null) {
         return sizePromptResponce;
     } else if (numPromptResponce >= 1 && numPromptResponce <= 100) {
+        gridClear();
         createGrid(sizePromptResponce);
     } else {
         invalidResponse()
@@ -49,12 +45,12 @@ function createGridByPrompt () {
 
 function invalidResponse ()  {
     alert("Please enter an integer (whole number) from 1 to 100");
-    createGridByPrompt();
+    resetGridWithPrompt();
 }
 
 // ==============Create User Interface==============
 let resetButton = document.createElement('button');
     resetButton.textContent ='Reset Grid';
-    resetButton.addEventListener('click', resetGrid);
+    resetButton.addEventListener('click', resetGridWithPrompt);
 
     gridContainer.parentNode.insertBefore(resetButton, gridContainer);
