@@ -24,21 +24,7 @@ function mouseTrace (element) {
 
 // ==============Clear Function==============
 function gridClear () {
-    //method that can remove & add in one operation! Current modern approach
     gridContainer.replaceChildren();
-
-    //old fastest & safe method
-    //gridContainer.textContent = ''; //huh it's good to know this wipes out children! 
-
-    //looping method (alternate to textContent)
-    //while (gridContainer.firstChild) {
-        //gridContainer.removeChild(gridContainer.lastChild);
-            //or use .lastElementChild instead of .firstChild and .lastChild 
-            //in this code to remove only children elements NOT html comments 
-            //and text nodes -- NOTE ONLY DIRECT CHILDREN comments/text nodes 
-            // will not be affected. Comments/nodes on children elements WILL 
-            // still be removed
-    //} 
 }
 
 // ==============Set Up Reset Function==============
@@ -72,5 +58,3 @@ let resetButton = document.createElement('button');
     resetButton.addEventListener('click', resetGrid);
 
     gridContainer.parentNode.insertBefore(resetButton, gridContainer);
-
-    //testing that local and github versions are push/pull-able
