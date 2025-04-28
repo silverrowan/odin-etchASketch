@@ -1,15 +1,14 @@
 * {
-    border: 1px solid orange;
-    margin: 2px;
+    margin: 0px;
     box-sizing: content-box;
 }
 
 #container {
     height: 1000px;
     width: 1000px;
-    border: 1px solid darkgoldenrod;
     display: flex;
     flex-direction: column;
+    border: 2px solid rgb(10, 53, 8);
 }
 
 .row {
@@ -18,11 +17,11 @@
 }
     
 .column {
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(202, 255, 200);
     flex: 1;
+    border: 1px solid rgb(32, 90, 30);
 }
 
-
 .trace {
-    background-color: gold;
+    background-color: rgb(243, 252, 162);
 }
