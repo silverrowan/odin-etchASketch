@@ -17,21 +17,21 @@ function createGrid (gridSize = 16) {
 
 createGrid()
 
-// ==============Mouse Trace Function==============
+// ==============Mouse Trace==============
 function mouseTrace (element) {
     element.addEventListener("mouseover", () => {
         element.classList.add('trace');
-        createRandomRGB(); //creating the rgb string fine, not visibly applying it though
-        element.style.backgroundColor = "blue";
+        let divColor = createRandomRGB(150,); //pale colors only
+        element.style.backgroundColor = `${divColor}`;
     });
 }
 
-function createRandomRGB () {
-    let randomR = getRandomNum(0,255);
-    let randomG = getRandomNum(0,255);
-    let randomB = getRandomNum(0,255);
-    let randomRGB = `"rgb(${randomR}, ${randomG}, ${randomB})"`;
-    console.log(randomRGB);
+// ==============Random Color Function==============
+function createRandomRGB (min = 0, max = 255) {
+    let randomR = getRandomNum(min,max);
+    let randomG = getRandomNum(min,max);
+    let randomB = getRandomNum(min,max);
+    let randomRGB = `rgb(${randomR}, ${randomG}, ${randomB})`;
     return randomRGB;
 }
 
