@@ -24,18 +24,31 @@ function mouseTrace (element) {
 
 // ==============Clear Function==============
 function gridClear () {
-    const rowDivsToRemove = document.querySelector('.row');
-    gridContainer.removeChild(rowDivsToRemove); //successfully removes ONE row
+    //method that can remove & add in one operation! Current modern approach
+    gridContainer.replaceChildren();
+
+    //old fastest & safe method
+    //gridContainer.textContent = ''; //huh it's good to know this wipes out children! 
+
+    //looping method (alternate to textContent)
+    //while (gridContainer.firstChild) {
+        //gridContainer.removeChild(gridContainer.lastChild);
+            //or use .lastElementChild instead of .firstChild and .lastChild 
+            //in this code to remove only children elements NOT html comments 
+            //and text nodes -- NOTE ONLY DIRECT CHILDREN comments/text nodes 
+            // will not be affected. Comments/nodes on children elements WILL 
+            // still be removed
+    //} 
 }
 
 // ==============Set Up Reset Function==============
 function resetGrid () {
-    gridClear(); //currently incomplete
-    resetPrompt ();
+    gridClear();
+    createGridByPrompt ();
 }
 
 // ==============Prompt, Check Response, & Route==============
-function resetPrompt () {
+function createGridByPrompt () {
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
     let sizePromptResponce = prompt(sizeQuestion);
     let numPromptResponce = Number(sizePromptResponce);
@@ -50,7 +63,7 @@ function resetPrompt () {
 
 function invalidResponse ()  {
     alert("Please enter an integer (whole number) from 1 to 100");
-    resetPrompt();
+    createGridByPrompt();
 }
 
 // ==============Create User Interface==============
