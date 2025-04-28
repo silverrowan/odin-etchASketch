@@ -25,23 +25,26 @@ function mouseTrace (element) {
 // ==============Set Up Reset Function==============
 function resetGrid () {
     //TODO remove old grid entirely
+    resetPrompt ();
+}
 
-    // ==============Prompt & Check Response==============
+// ==============Prompt, Check Response, & Route==============
+function resetPrompt () {
     let sizeQuestion = 'How many squares per side should the new grid have? (max 100)';
     let sizePromptResponce = prompt(sizeQuestion);
-    let numPromptResponce = Number(sizePromptResponce)
-    while ( numPromptResponce > 100 || numPromptResponce < 1 || !(Number.isInteger(numPromptResponce)) ) {    
-        console.log((Number.isInteger(sizePromptResponce)));
-        console.log(!(Number.isInteger(sizePromptResponce)));        
-        alert("Please enter an integer (whole number) from 1 to 100");
-        sizePromptResponce = prompt(sizeQuestion);
-        numPromptResponce = Number(sizePromptResponce);
-        if (sizePromptResponce == null) {
-            break;
-        } 
+    let numPromptResponce = Number(sizePromptResponce);
+    if (sizePromptResponce == null) {
+        return sizePromptResponce;
+    } else if (numPromptResponce >= 1 && numPromptResponce <= 100) {
+        createGrid(sizePromptResponce);
+    } else {
+        invalidResponse()
     }
-    // ==============Create Grid of Prompt Size==============
-    createGrid(sizePromptResponce); 
+}
+
+function invalidResponse ()  {
+    alert("Please enter an integer (whole number) from 1 to 100");
+    resetPrompt();
 }
 
 // ==============Create User Interface==============
