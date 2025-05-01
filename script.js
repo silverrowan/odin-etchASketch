@@ -63,6 +63,7 @@ function getRandomNum (minValue = 0, maxValue = 100) {
 // ==============Clear Function==============
 function gridClear () {
     gridContainer.replaceChildren();
+    mouseoverCount = 0
 }
 
 // ==============Prompt, Check Response, & Call Clear + Create==============
