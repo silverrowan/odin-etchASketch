@@ -2,10 +2,12 @@
 Etch-a-sketch like project per The Odin Project
 https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 
-Currently baseline project complete.
+Baseline project and both extended components are complete and 
+apply simultaneously.
 
 A grid of 16x16 squares is generated, and the color of each square 
-changes as you mouseover it.
+changes as you mouseover it. The new color is a random (light) color,
+and the trace gets darker by 10% for each grid square it passes. 
 
 The grid can be redrawn to any size up to 100 squares by clicking
 the reset grid button.
