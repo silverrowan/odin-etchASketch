@@ -17,36 +17,31 @@ function createGrid (gridSize = 16) {
 
 createGrid()
 
-// ==============Count Listener Activations==============
+// ==============Mouse Trace Function==============
 let mouseoverCount = 0
-    //on listener activation ++
-    //add to classes mouseoverCount value
-    //
-
-// ==============Mouse Trace==============
 function mouseTrace (element) {
     element.addEventListener("mouseover", () => {
         element.classList.add('trace');
-        //randomize color
-        let divColor = createRandomRGB(150,); //pale colors only
-        element.style.background = `${divColor}`;
-        //darken color
         mouseoverCount ++;
-        element.classList.add(mouseoverCount);
-        let blackOpacity = mouseoverCount/10
-        element.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, ${blackOpacity}), rgba(0, 0, 0, ${blackOpacity}))`;
-        // darkenColor();
+        applyRandomRGB(element);
+        darkenColor(element);
     });
 }
-// ==============Darkening==============
-// function darkenColor () {
-//     element.classList.add(mouseoverCount);
-//     element.style.backgroundColor = `${divColor}`;
-//     let blackOpacity = mouseoverCount/10;
-//     element.style.backgroundColor = `rgba(0, 0, 0, 1)`;
-// }
+
+// ==============Darkening Function==============
+function darkenColor (element) {
+    element.classList.add(mouseoverCount);
+    let blackOpacity = mouseoverCount/10
+    let blackOpacityRGBValue = `rgba(0, 0, 0, ${blackOpacity})`
+    element.style.backgroundImage = `linear-gradient(to right, ${blackOpacityRGBValue}, ${blackOpacityRGBValue})`;
+}
 
 // ==============Random Color Function==============
+function applyRandomRGB (element) {
+    let divColor = createRandomRGB(150,); //pale colors only
+    element.style.background = `${divColor}`;
+}
+
 function createRandomRGB (min = 0, max = 255) {
     let randomR = getRandomNum(min,max);
     let randomG = getRandomNum(min,max);
