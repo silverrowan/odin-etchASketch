@@ -17,16 +17,31 @@ function createGrid (gridSize = 16) {
 
 createGrid()
 
-// ==============Mouse Trace==============
+// ==============Mouse Trace Function==============
+let mouseoverCount = 0
 function mouseTrace (element) {
     element.addEventListener("mouseover", () => {
         element.classList.add('trace');
-        let divColor = createRandomRGB(150,); //pale colors only
-        element.style.backgroundColor = `${divColor}`;
+        mouseoverCount ++;
+        applyRandomRGB(element);
+        darkenColor(element);
     });
 }
 
+// ==============Darkening Function==============
+function darkenColor (element) {
+    element.classList.add(mouseoverCount);
+    let blackOpacity = mouseoverCount/10
+    let blackOpacityRGBValue = `rgba(0, 0, 0, ${blackOpacity})`
+    element.style.backgroundImage = `linear-gradient(to right, ${blackOpacityRGBValue}, ${blackOpacityRGBValue})`;
+}
+
 // ==============Random Color Function==============
+function applyRandomRGB (element) {
+    let divColor = createRandomRGB(150,); //pale colors only
+    element.style.background = `${divColor}`;
+}
+
 function createRandomRGB (min = 0, max = 255) {
     let randomR = getRandomNum(min,max);
     let randomG = getRandomNum(min,max);
@@ -43,6 +58,7 @@ function getRandomNum (minValue = 0, maxValue = 100) {
 // ==============Clear Function==============
 function gridClear () {
     gridContainer.replaceChildren();
+    mouseoverCount = 0
 }
 
 // ==============Prompt, Check Response, & Call Clear + Create==============
