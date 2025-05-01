@@ -34,7 +34,7 @@ function mouseTrace (element) {
         mouseoverCount ++;
         element.classList.add(mouseoverCount);
         let blackOpacity = mouseoverCount/10
-        element.style.background = `rgba(0, 0, 0, ${blackOpacity})`;
+        element.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, ${blackOpacity}), rgba(0, 0, 0, ${blackOpacity}))`;
         // darkenColor();
     });
 }
@@ -44,7 +44,7 @@ function mouseTrace (element) {
 //     element.style.backgroundColor = `${divColor}`;
 //     let blackOpacity = mouseoverCount/10;
 //     element.style.backgroundColor = `rgba(0, 0, 0, 1)`;
-}
+// }
 
 // ==============Random Color Function==============
 function createRandomRGB (min = 0, max = 255) {
