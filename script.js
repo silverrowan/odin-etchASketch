@@ -17,13 +17,33 @@ function createGrid (gridSize = 16) {
 
 createGrid()
 
+// ==============Count Listener Activations==============
+let mouseoverCount = 0
+    //on listener activation ++
+    //add to classes mouseoverCount value
+    //
+
 // ==============Mouse Trace==============
 function mouseTrace (element) {
     element.addEventListener("mouseover", () => {
         element.classList.add('trace');
+        //randomize color
         let divColor = createRandomRGB(150,); //pale colors only
-        element.style.backgroundColor = `${divColor}`;
+        element.style.background = `${divColor}`;
+        //darken color
+        mouseoverCount ++;
+        element.classList.add(mouseoverCount);
+        let blackOpacity = mouseoverCount/10
+        element.style.background = `rgba(0, 0, 0, ${blackOpacity})`;
+        // darkenColor();
     });
+}
+// ==============Darkening==============
+// function darkenColor () {
+//     element.classList.add(mouseoverCount);
+//     element.style.backgroundColor = `${divColor}`;
+//     let blackOpacity = mouseoverCount/10;
+//     element.style.backgroundColor = `rgba(0, 0, 0, 1)`;
 }
 
 // ==============Random Color Function==============
