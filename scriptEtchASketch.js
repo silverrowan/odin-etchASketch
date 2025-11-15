@@ -1,3 +1,4 @@
+// =====================Setup UI Build Functions=====================
 const headderBarDiv = document.querySelector('div.headderBar');
 
 function createNewGridBtn() {
@@ -18,15 +19,15 @@ function createGrid(numCells) {
         for (j=0; j < numCells; j++) {
             const gridCellDiv = document.createElement('div')
             gridCellDiv.className = `gridCell gc${j}`;
+            gridCellDiv.addEventListener('mouseover', (event) => highlightCell );
             rowContainderDiv.appendChild(gridCellDiv);
-        }
+            }
         gridContainerDiv.appendChild(rowContainderDiv);
+        gridContainerDiv.addEventListener('mouseover', highlightCell );
     }
     headderBarDiv.after(gridContainerDiv);
-}
 
-createNewGridBtn()
-createGrid(16)
+}
 
 function reCreateGrid() {
     let numCells;
@@ -36,7 +37,15 @@ function reCreateGrid() {
     const gridContainerDiv = document.querySelector('.frame');
     gridContainerDiv.remove();
     createGrid(+numCells);
+}
 
-    // gridContainerInnerDiv.remove();
-    // const gridContainerInnerDiv = document.querySelector('div.gridContainer');
+// =====================Call UI Build Functions=====================
+createNewGridBtn()
+createGrid(16)
+
+// =====================Setup Color Change Functions=====================
+function highlightCell(e) {
+    let target = e.target;
+    console.log(target);
+    target.className += ' highlight'
 }
