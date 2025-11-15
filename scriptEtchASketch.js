@@ -46,6 +46,25 @@ createGrid(16)
 // =====================Setup Color Change Functions=====================
 function highlightCell(e) {
     let target = e.target;
-    console.log(target);
-    target.className += ' highlight'
+    let targetClass = target.className
+    if ( !targetClass.includes('highlight') ) {
+        target.className += ' highlight';
+        target.style.backgroundColor = randomHSLGreenColor();
+    }
+}
+
+//Random number between a & b, inclusive
+function randomInteger(a, b) { 
+        return Math.floor( Math.random() * b + a );
+}
+
+function randomRGBColor() {
+    let colorRGB = `rgb(${randomInteger(0,255)}, ${randomInteger(0,255)}, ${randomInteger(0,255)})`;
+    return colorRGB;
+}
+
+function randomHSLGreenColor() {
+    let colorHSL = `HSL(${randomInteger(70,110)}, ${randomInteger(40,55)}%, ${randomInteger(30,45)}%)`;
+    console.log(colorHSL);
+    return colorHSL;
 }

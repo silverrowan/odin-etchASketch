@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    border: 1px solid green;
-
 }
 
 .frame, .btnFrame {
@@ -19,13 +17,10 @@
     height: 80vh;
 }
 
-.btnFrame {
-    padding: 3px;
-}
-
 .newGrid {
     flex: 1;
     background-color: lightgreen;
+    border: 1px solid forestgreen;
 }
 
 .column {
@@ -42,7 +37,3 @@
 .highlight {
     background-color: greenyellow;
 }
-
-/* .co10 .gc10 {
-
-} */
