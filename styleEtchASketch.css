@@ -9,12 +9,20 @@
     display: flex;
 
 }
+
+.invisFrame {
+    display: flex;
+    flex-grow: 1;
+}
+
 .frame {
     height: 80vh;
 }
+
 .btnFrame {
     padding: 3px;
 }
+
 .newGrid {
     flex: 1;
     background-color: lightgreen;
