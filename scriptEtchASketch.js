@@ -1,10 +1,14 @@
-const headderBarDiv = document.querySelector('div.headderBar');
-    headderBarDiv.className = 'btnFrame'
-    const newGridBtn = document.createElement('button');
-    newGridBtn.className = `newGrid`
-    newGridBtn.textContent = 'New Grid';
-    headderBarDiv.appendChild(newGridBtn);
-const gridContainerDiv = document.querySelector('div.gridContainer');
+function createNewGridBtn() {
+    const headderBarDiv = document.querySelector('div.headderBar');
+        headderBarDiv.className = 'btnFrame'
+        const newGridBtn = document.createElement('button');
+        newGridBtn.className = `newGrid`
+        newGridBtn.textContent = 'New Grid';
+        headderBarDiv.appendChild(newGridBtn);
+}
+
+function createGrid() {
+    const gridContainerDiv = document.querySelector('div.gridContainer');
     gridContainerDiv.className = 'frame';
     for (i=0; i < 16; i++) {
         const rowContainderDiv = document.createElement('div');
@@ -16,3 +20,7 @@ const gridContainerDiv = document.querySelector('div.gridContainer');
         }
         gridContainerDiv.appendChild(rowContainderDiv);
     }
+}
+
+createNewGridBtn()
+createGrid()
