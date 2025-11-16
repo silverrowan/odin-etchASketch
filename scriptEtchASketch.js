@@ -49,24 +49,29 @@ function highlightCell(e) {
     let target = e.target;
     let targetClass = target.className
     if ( !targetClass.includes('highlight') ) {
-        target.className += ' highlight';
+        target.className += ' highlight count&0';
         target.style.backgroundColor = randomHSLGreenColor();
-        let targetCount = document.createAttribute("mouseOverCount");
-        targetCount.value = 0;
-        target.setAttribute(targetCount)
     } else {
-        let targetCount = target.getAttribute('mouseOverCount')
-        console.log(targetCount);
-        let newTargetCount = +targetCount + 1;
-        target.setAttribute(mouseOverCount, newTargetCount);
-        // let targetCount = document.getAttribute
-        // targetCount.value = targetCountValue;
-        
-        // let color = target.style.backgroundColor;
-        // console.log('getbkgrndcol: ' + color);
-        // let eventCount = ...
-        darkenCell(target, targetCount);       
+        let color = target.style.backgroundColor;
+        let newTargetCount = increaseEventCounterClass(target, targetClass);
+        darkenCell(target, newTargetCount, 'black');       
     }
+}
+
+function splitClassNameByAmpersand (targetClassString) {
+    let targetCountArray = targetClassString.split('&')
+    console.log(targetCountArray);
+    return targetCountArray
+}
+
+function increaseEventCounterClass(target, targetClass){
+    let oldClass = splitClassNameByAmpersand (targetClass);
+    let newCount = +oldClass[1] + 1;
+    let newClass = oldClass[0] + `&${newCount}`;
+    console.log(newClass);
+    target.className = newClass;
+    console.log(target.className);
+    return newCount;
 }
 
 //Random number between a & b, inclusive
@@ -80,14 +85,11 @@ function randomHSLGreenColor() {
     return colorHSL;
 }
 
-function overlayGrid() {
-    let overlayColor = rgb(0,0,0 / .1);
-}
-
-function darkenCell(target) {
-        // target.count += 1;
-        // let transparency = ( targetCount - 1 ) * .1;
-        target.style.backgroundImage = `linear-gradient(${randomInteger(0,359)}deg, rgb(0,0,0), transparent)` //rgb(0,0,0 / ${transparency})
-        console.log(target.style.backgroundImage);
-        // console.log( ( +targetCount - 1 ) * .1 );
+function darkenCell(target, counter, overlayColor) {
+    if (counter > 10) {
+        counter = 10
+    }
+    let overlayRGBA = `rgb(from ${overlayColor} r g b / ${counter * 0.1} )`;
+    let overlayRGBA2 = `rgb(from ${overlayColor} r g b / ${counter * 0.2} )`;
+    target.style.backgroundImage = `linear-gradient(${randomInteger(0,359)}deg, ${overlayRGBA2}, ${overlayRGBA})`;
 }
