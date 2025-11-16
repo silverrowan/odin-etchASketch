@@ -44,12 +44,28 @@ createNewGridBtn()
 createGrid(16)
 
 // =====================Setup Color Change Functions=====================
+    // let target.count = 0;
 function highlightCell(e) {
     let target = e.target;
     let targetClass = target.className
     if ( !targetClass.includes('highlight') ) {
         target.className += ' highlight';
         target.style.backgroundColor = randomHSLGreenColor();
+        let targetCount = document.createAttribute("mouseOverCount");
+        targetCount.value = 0;
+        target.setAttribute(targetCount)
+    } else {
+        let targetCount = target.getAttribute('mouseOverCount')
+        console.log(targetCount);
+        let newTargetCount = +targetCount + 1;
+        target.setAttribute(mouseOverCount, newTargetCount);
+        // let targetCount = document.getAttribute
+        // targetCount.value = targetCountValue;
+        
+        // let color = target.style.backgroundColor;
+        // console.log('getbkgrndcol: ' + color);
+        // let eventCount = ...
+        darkenCell(target, targetCount);       
     }
 }
 
@@ -58,13 +74,20 @@ function randomInteger(a, b) {
         return Math.floor( Math.random() * b + a );
 }
 
-function randomRGBColor() {
-    let colorRGB = `rgb(${randomInteger(0,255)}, ${randomInteger(0,255)}, ${randomInteger(0,255)})`;
-    return colorRGB;
-}
-
 function randomHSLGreenColor() {
     let colorHSL = `HSL(${randomInteger(70,110)}, ${randomInteger(40,55)}%, ${randomInteger(30,45)}%)`;
     console.log(colorHSL);
     return colorHSL;
+}
+
+function overlayGrid() {
+    let overlayColor = rgb(0,0,0 / .1);
+}
+
+function darkenCell(target) {
+        // target.count += 1;
+        // let transparency = ( targetCount - 1 ) * .1;
+        target.style.backgroundImage = `linear-gradient(${randomInteger(0,359)}deg, rgb(0,0,0), transparent)` //rgb(0,0,0 / ${transparency})
+        console.log(target.style.backgroundImage);
+        // console.log( ( +targetCount - 1 ) * .1 );
 }
